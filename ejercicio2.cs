@@ -1,7 +1,10 @@
   //ejercicio 2 -----------------------------------------------
-        public void ejercicio2(int a, int b)
+          public void ejercicio2(int a, int b, ref Vector ve, ref Vector vf)
         {
-            int p = a;
+            ve.n = 0;
+            vf.n = 0;
+
+            Ordenar_Asc_Rango(a, b);
 
             for (int i = a; i <= b; i++)
             {
@@ -10,31 +13,32 @@
 
                 if (num.VerifPrimo())
                 {
-                    intercambiar(i, p);
-                    p++;
+                    if (ve.Buscar_ele(v[i]) == false)
+                    {
+                        int c = 0;
+
+                        for (int j = a; j <= b; j++)
+                        {
+                            if (v[j] == v[i])
+                                c++;
+                        }
+
+                        ve.insertar(v[i]);
+                        vf.insertar(c);
+                    }
                 }
             }
+        }
 
-            Ordenar_Asc_Rango(a, p - 1);
-            Ordenar_Asc_Rango(p, b);
 
-            int ip = a;
-            int inp = p;
 
-            while ((ip < p) && (inp <= b))
-            {
-                int aux = v[inp];
+        public void intercambiar(int pos1, int pos2)
+        {
+            int aux;
 
-                for (int j = inp; j > ip + 1; j--)
-                {
-                    v[j] = v[j - 1];
-                }
-
-                v[ip + 1] = aux;
-
-                ip = ip + 2;
-                inp++;
-            }
+            aux = v[pos1];
+            v[pos1] = v[pos2];
+            v[pos2] = aux;
         }
 
         public void Ordenar_Asc_Rango(int a, int b)
@@ -50,5 +54,12 @@
                 }
             }
         }
+ //llamada  ejercicio2
 
 
+
+
+            v1.ejercicio2(int.Parse(textBox2.Text),int.Parse(textBox3.Text), ref v2,ref v3);
+
+            //textBox7.Text = v2.Descargar();
+            //textBox8.Text = v3.Descargar();

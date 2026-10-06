@@ -1,27 +1,63 @@
 
    //ejercicio 1 -----------------------------------------------
 
-        public void ejercicio1(int m)
+         public void ejercicio1(Vector v2, ref Vector vr)
         {
-            for (int i = m; i <= n; i = i + m)
+            vr.n = 0;
+
+         
+            for (int i = 1; i <= n; i++)
             {
-                for (int j = i + m; j <= n; j = j + m)
+                if (v2.Buscar_ele(v[i]) == false)
                 {
-                    if (v[j] < v[i])
+                    if (vr.Buscar_ele(v[i]) == false)
                     {
-                        intercambiar(i, j);
+                        vr.insertar(v[i]);
+                    }
+                }
+            }
+
+           
+            for (int i = 1; i <= v2.n; i++)
+            {
+                if (Buscar_ele(v2.v[i]) == false)
+                {
+                    if (vr.Buscar_ele(v2.v[i]) == false)
+                    {
+                        vr.insertar(v2.v[i]);
                     }
                 }
             }
         }
 
-        public void intercambiar(int pos1, int pos2)
+        public bool Buscar_ele(int ele)
         {
-            int aux;
+            int i = 1;
+            bool ban = false;
 
-            aux = v[pos1];
-            v[pos1] = v[pos2];
-            v[pos2] = aux;
+            while ((i <= n) && (ban == false))
+            {
+                if (v[i] == ele)
+                {
+                    ban = true;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+            return ban;
         }
+
+        public void insertar(int ele)
+        {
+            n = n + 1;
+            v[n] = ele;
+        }
+
+
+
             //llamada  ejercicio1
-            v1.ejercicio1(int.Parse(textBox2.Text));
+           v1.ejercicio1(v2, ref v3);
+            //textBox8.Text = v3.Descargar();

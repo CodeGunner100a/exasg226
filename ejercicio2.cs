@@ -1,65 +1,70 @@
-  //ejercicio 2 -----------------------------------------------
-          public void ejercicio2(int a, int b, ref Vector ve, ref Vector vf)
-        {
-            ve.n = 0;
-            vf.n = 0;
 
-            Ordenar_Asc_Rango(a, b);
+        //ejercicio 2 -----------------------------------------------
+
+        public void ejercicio2(int a, int b)
+        {
+            int k = a;
 
             for (int i = a; i <= b; i++)
             {
-                NEnt num = new NEnt();
-                num.Cargar(v[i]);
-
-                if (num.VerifPrimo())
+                if (frecuenciaRango(v[i], a, b) > 1)
                 {
-                    if (ve.Buscar_ele(v[i]) == false)
-                    {
-                        int c = 0;
-
-                        for (int j = a; j <= b; j++)
-                        {
-                            if (v[j] == v[i])
-                                c++;
-                        }
-
-                        ve.insertar(v[i]);
-                        vf.insertar(c);
-                    }
+                    intercambiar(i, k);
+                    k++;
                 }
             }
+
+            Ordenar_Desc_Rango(a, k - 1);
+            Ordenar_Desc_Rango(k, b);
         }
 
-
-
-        public void intercambiar(int pos1, int pos2)
+        public int frecuenciaRango(int ele, int a, int b)
         {
-            int aux;
+            int c = 0;
 
-            aux = v[pos1];
-            v[pos1] = v[pos2];
-            v[pos2] = aux;
+            for (int i = a; i <= b; i++)
+            {
+                if (v[i] == ele)
+                    c++;
+            }
+
+            return c;
         }
-
-        public void Ordenar_Asc_Rango(int a, int b)
+        public void Ordenar_Desc_Rango(int a, int b)
         {
             for (int i = a; i <= b - 1; i++)
             {
                 for (int j = i + 1; j <= b; j++)
                 {
-                    if (v[j] < v[i])
-                    {
+                    if (v[j] > v[i])
                         intercambiar(i, j);
-                    }
                 }
             }
         }
- //llamada  ejercicio2
+
+        public void intercambiar(int pos1, int pos2)
+        {
+            int aux;
+            aux = v[pos1];
+            v[pos1] = v[pos2];
+            v[pos2] = aux;
+        }
+
+
+            //llamada  ejercicio2
+
+            v1.ejercicio2(
+        int.Parse(textBox2.Text),
+        int.Parse(textBox3.Text));
 
 
 
 
-            v1.ejercicio2(int.Parse(textBox2.Text),int.Parse(textBox3.Text), ref v2,ref v3);
 
-            //textBox7.Text = v2.Descargar();
-            //textBox8.Text = v3.Descargar();
+
+
+
+
+
+
+

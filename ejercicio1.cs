@@ -1,63 +1,20 @@
-
-   //ejercicio 1 -----------------------------------------------
-
-         public void ejercicio1(Vector v2, ref Vector vr)
+        //ejercicio 1 ----------------------------------------------- aaa
+        public void ejercicio1(int m)
         {
-            vr.n = 0;
+            int j = 1;
 
-         
             for (int i = 1; i <= n; i++)
             {
-                if (v2.Buscar_ele(v[i]) == false)
+                if (i % m != 0)
                 {
-                    if (vr.Buscar_ele(v[i]) == false)
-                    {
-                        vr.insertar(v[i]);
-                    }
+                    v[j] = v[i];
+                    j++;
                 }
             }
 
-           
-            for (int i = 1; i <= v2.n; i++)
-            {
-                if (Buscar_ele(v2.v[i]) == false)
-                {
-                    if (vr.Buscar_ele(v2.v[i]) == false)
-                    {
-                        vr.insertar(v2.v[i]);
-                    }
-                }
-            }
+            n = j - 1;
         }
-
-        public bool Buscar_ele(int ele)
-        {
-            int i = 1;
-            bool ban = false;
-
-            while ((i <= n) && (ban == false))
-            {
-                if (v[i] == ele)
-                {
-                    ban = true;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-
-            return ban;
-        }
-
-        public void insertar(int ele)
-        {
-            n = n + 1;
-            v[n] = ele;
-        }
-
-
 
             //llamada  ejercicio1
-           v1.ejercicio1(v2, ref v3);
-            //textBox8.Text = v3.Descargar();
+            v1.ejercicio1(int.Parse(textBox2.Text));
+            //textBox5.Text = v1.Descargar();

@@ -1,7 +1,7 @@
 
         //ejercicio 2 -----------------------------------------------
 
-        public void ejercicio2(int a, int b)
+       public void ejercicio2(int a, int b)
         {
             int k = a;
 
@@ -30,6 +30,7 @@
 
             return c;
         }
+
         public void Ordenar_Desc_Rango(int a, int b)
         {
             for (int i = a; i <= b - 1; i++)
@@ -50,12 +51,12 @@
             v[pos2] = aux;
         }
 
+           
 
-            //llamada  ejercicio2
+          //llamada  ejercicio2
 
-            v1.ejercicio2(
-        int.Parse(textBox2.Text),
-        int.Parse(textBox3.Text));
+            v1.ejercicio2(int.Parse(textBox2.Text), int.Parse(textBox3.Text));
+            //textBox5.Text = v1.Descargar();
 
 
 

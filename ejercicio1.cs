@@ -1,24 +1,36 @@
         //ejercicio 1 ----------------------------------------------- aaa
-         public void CargarRndSinRep(int n1)
+       
+
+
+  public void ejercicio1(int a, int b)
         {
-            Random r = new Random();
-            n = 0;
+            int k = a;
 
-            while (n < n1)
+            for (int i = a; i <= b; i++)
             {
-                int ele = r.Next(1, 101);
-
-                if (Buscar_ele(ele) == false)
-                    insertar(ele);
+                if (Buscar_ele_Rango(v[i], a, k - 1) == false)
+                {
+                    v[k] = v[i];
+                    k++;
+                }
             }
+
+            int elim = b - k + 1;
+
+            for (int i = b + 1; i <= n; i++)
+            {
+                v[i - elim] = v[i];
+            }
+
+            n = n - elim;
         }
 
-        public bool Buscar_ele(int ele)
+        public bool Buscar_ele_Rango(int ele, int a, int b)
         {
-            int i = 1;
+            int i = a;
             bool ban = false;
 
-            while ((i <= n) && (ban == false))
+            while ((i <= b) && (ban == false))
             {
                 if (v[i] == ele)
                     ban = true;
@@ -29,15 +41,9 @@
             return ban;
         }
 
-
-        public void insertar(int ele)
-        {
-            n = n + 1;
-            v[n] = ele;
-        }
-
-
-     //llamada  ejercicio1
-            v1.CargarRndSinRep(int.Parse(textBox1.Text));
+ //llamada  ejercicio1
+            v1.ejercicio1(int.Parse(textBox2.Text), int.Parse(textBox3.Text));
 
             //textBox5.Text = v1.Descargar();
+
+
